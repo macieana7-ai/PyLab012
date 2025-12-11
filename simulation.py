@@ -1,8 +1,39 @@
+import turtle
 from solarsystem import SolarSystem
 
 class Simulation:
-    def __init__(self, solarsystem: SolarSystem, width: int, height: int,) -> None:
-        self._the_sun: Sun | None = None
-        self.planets: list[Planet] = []
-        self.gravity: UniversalGravity | None = None
+    def __init__(self, solarsystem: SolarSystem, width: int, height: int, num_periods: int):
+        self._solar_system = solar_system
+        self._width = width
+        self._height = height
+        self._num_periods = num_periods
+        # Turtle stuff
+        self._t = turtle.Turtle()
+        self._t.hideturtle()
+        self._screen = turtle.Screen()
+        self._screen.setup(width=self._width, height=self._height)
+        self._screen.bgcolor("black")
+        self._t.clear()
+        # Observer list
+        self.observer:list = []
+
+    def register(self, observer):
+        self.observer.append(observer)
+
+    def notify(self, event:str):
+        for observer in self.observer:
+            observer.update(self, event)
+
+    def get_screen(self):
+        return self._screen
+
+    def run(self):
+        self._t.shape('sun.gif')
+        # Stud - the UML defines the method but not the algorithm
+        for _ in range(self._num_periods):
+            self._solar_system.simulate()
+        self.freeze()
+
+    def freeze(self):
+        self._solar.exitonclick()
 

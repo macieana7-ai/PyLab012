@@ -6,13 +6,15 @@ from sun import Sun
 
 def main():
     solar_sys = SolarSystem()
-    solar_sys.add_sun(Sun(name='MySUN', radius=100, mass=100, temp=100))
-    solar_sys.add_planet(Planet(name='OhNo', radius=22.0, mass=.33, temp=100, pressure=100, distance=100, x=10, y=0, vel_x=100, vel_y=100))
-    sim = Simulation(solar_sys,500, 500, 100)
+    the_sun = Sun(name='MySUN', radius=5, mass=1.989e14, temp=5000))
+    solar_sys.add_planet(Planet(name='Earth', radius=22.0, mass=.33, distance=50, x=0, y=50, vel_x=16, vel_y=5, color="blue"))
+    solar_sys.add_planet(Planet(name='Mars', radius=22.0, mass=.33, distance=50, x=0, y=50, vel_x=12, vel_y=5, color="red"))
+    sim = Simulation(solar_sys, 800, 800, 5000)
+    sim.register(the_sun)
     solar_sys.show(sim)
     sim.run()
     solar_sys.show_plaents()
 
 
     if __name__ == '__main__':
-       main()
+        main()

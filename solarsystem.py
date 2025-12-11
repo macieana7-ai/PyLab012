@@ -16,8 +16,8 @@ class SolarSystem:
            print(p)
 
    def move_planets(self):
-       dt = .001  # Constant time interval for each solar system iteration.
-       ug = UniveralGravity(9.8)
+       dt = .1  # Constant time interval for each solar system iteration.
+       ug = UniveralGravity(6.67430e-11)
 
        for planet in self._planets:
            # Move the distance covered in the interval dt
